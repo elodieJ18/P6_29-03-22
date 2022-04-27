@@ -9,7 +9,7 @@ const saucesSchema = mongoose.Schema({
   imageUrl: { type: String, required: true },
   heat: { type: Number, required: true },
   likes: { type: Number, required: true },
-  dislikes: { type: Number, required: true },
+  disLikes: { type: Number, required: true },
   //a revoir les likes je ne sais pas comment ecrire
   usersLiked: { type: [String], required: true },
   usersDisliked: { type: [String], required: true },

@@ -1,7 +1,11 @@
 const express = require("express");
 //crééer un application express
-const app = express();
 const mongoose = require("mongoose");
+
+const path = require("path");
+
+const app = express();
+//import des routes
 const authRoutes = require("./routes/user");
 const saucesRoutes = require("./routes/sauces");
 
@@ -30,6 +34,10 @@ app.use((req, res, next) => {
   next();
 });
 
+//Gestion de la ressource image de façon statique
+app.use("/images", express.static(path.join(__dirname, "images")));
+
+//routes
 app.use("/api/auth", authRoutes);
 app.use("/api/sauces", saucesRoutes);
 
