@@ -24,7 +24,44 @@ exports.getallSauces = (req, res, next) => {
 };
 
 //modifier une sauce
-//exports.modifySauces = (req, res, next) => {};
+exports.modifySauces = (req, res, next) => {
+  const saucesObject = req.file
+    ? {
+        ...JSON.parse(req.body.sauces),
+        imageUrl: `${req.protocol}://${req.get("host")}/images/${
+          req.file.filename
+        }`,
+      }
+    : { ...req.body };
+  if (req.file) {
+    Sauces.findOne({ _id: req.params.id })
+      .then((sauces) => {
+        const filename = sauces.imageUrl.split("/images/")[1];
+        fs.unlink(`images/${filename}`, () => {
+          Sauces.updateOne(
+            { _id: req.params.id },
+            { ...saucesObject, _id: req.params.id }
+          )
+            .then(() => {
+              res.status(200).json({ message: "Sauce mise à jour!" });
+            })
+            .catch((error) => {
+              res.status(400).json({ error });
+            });
+        });
+      })
+      .catch((error) => {
+        res.status(500).json({ error });
+      });
+  } else {
+    Sauces.updateOne(
+      { _id: req.params.id },
+      { ...saucesObject, _id: req.params.id }
+    )
+      .then(() => res.status(200).json({ message: "Sauce mise à jour!" }))
+      .catch((error) => res.status(400).json({ error }));
+  }
+};
 
 //afficher qu'une sauce
 //exports.getOneSauces = (req, res, next) => {};

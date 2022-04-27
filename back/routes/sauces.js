@@ -8,7 +8,7 @@ const multer = require("../middleware/multer-config");
 //creation d'une nouvelle sauce
 router.post("/", auth, multer, saucesCtrl.createSauces);
 //modification d'un produit
-//router.put("/:id", auth, saucesCtrl.modifySauces);
+router.put("/:id", auth, saucesCtrl.modifySauces);
 //afficher toutes les sauces
 router.get("/", auth, saucesCtrl.getallSauces);
 //suppression d'un produit
