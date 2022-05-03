@@ -34,7 +34,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//Gestion de la ressource image de façon statique
+//Gestion de la ressource images de façon statique
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 //routes
