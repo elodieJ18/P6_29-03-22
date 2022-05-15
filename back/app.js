@@ -1,5 +1,8 @@
 const express = require("express");
 //crééer un application express
+require("dotenv").config();
+console.log(process.env);
+
 const mongoose = require("mongoose");
 
 const path = require("path");
@@ -11,7 +14,7 @@ const saucesRoutes = require("./routes/sauces");
 
 mongoose
   .connect(
-    "mongodb+srv://elody18:BISqUQGEeeNgubM9@cluster0.wsjqa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.wsjqa.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connexion à MongoDB réussie !"))
