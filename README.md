@@ -7,7 +7,8 @@
 
 Lancement:
 
--npm install
--node server 
+$ npm install
+
+$node server 
 
 Construisez une API sécurisée pour une application d'avis gastronomiques
