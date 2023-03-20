@@ -1,9 +1,13 @@
-# P6_29-03-22
+# Piquante #
 
-#  #
+ ### Application de sauce piquante ### 
+ (Front faire par Openclassroom avec Angular / Back fait par moi avec Node.js)
 
-#### Projet FromScratch HTML/CSS/SCSS ####
+#### Projet Node.js/API MongoDB ####
 
-Exercice Openclassroom: Initiation à l'animation CSS/SCSS
+Lancement:
+
+-npm install
+-node server 
 
 Construisez une API sécurisée pour une application d'avis gastronomiques
